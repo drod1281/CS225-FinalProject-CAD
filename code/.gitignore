@@ -1,0 +1,6 @@
+CS225-FinalProject-CAD/code/build/
+build/
+test
+.obj
+*.o
+*.d
