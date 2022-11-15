@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/BFS.cpp.o CMakeFiles/src.dir/BTCGraph.cpp.o CMakeFiles/src.dir/DrawGraph.cpp.o CMakeFiles/src.dir/Prim.cpp.o CMakeFiles/src.dir/main.cpp.o
-/usr/bin/ranlib libsrc.a
