@@ -1,6 +1,39 @@
-CS225-FinalProject-CAD/code/build/
+code/build
+build-*
+code-build/
 build/
-test
 .obj
-*.o
+
+# Prerequisites
 *.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+>>>>>>> 32d1d43fa2d5a405d3296e4e4785fb07cac85a86
