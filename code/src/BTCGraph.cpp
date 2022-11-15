@@ -4,7 +4,7 @@
 #include <list>
 #include <queue>
 
-BTCGraph::BTCGraph() {}
+BTCGraph::BTCGraph(std::string filename) {}
 
 BTCGraph::~BTCGraph(){}
 
@@ -27,9 +27,9 @@ BTCGraph::BTCGraph() {
         }
     }
 
-    for(int i = 0; i < content.size(); i++) {
+    for(int i = 0; i < (int)content.size(); i++) {
         std::vector<std::string> iter = content[i];
-        std::map<std::string, std::vector<std::pair<std::string, int>>>::const_iterator it = graph_.find(iter[1]);
+        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(iter[1]);
         int rating = stoi(iter[2]);
         if (it != graph_.end()) {
             it->second.push_back(std::make_pair(iter[0], rating));

@@ -12,7 +12,7 @@ using namespace std;
 class BTCGraph {
     public:
     BTCGraph();
-    BTCGraph(string filename);
+    BTCGraph(std::string filename);
     ~BTCGraph();
     
     private:
