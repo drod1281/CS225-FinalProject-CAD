@@ -1,5 +1,8 @@
 #include "BTCGraph.h"
-
+#include <iterator>
+#include <cmath>
+#include <list>
+#include <queue>
 
 BTCGraph::BTCGraph() {}
 

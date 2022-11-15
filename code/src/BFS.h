@@ -4,7 +4,7 @@
 #include <cmath>
 #include <list>
 #include <queue>
-#include <../BTCGraph.h>
+#include </code/BTCGraph.h>
 
 using namespace std;
 
@@ -12,9 +12,9 @@ class BFS : public BTCGraph{
 //all of these may be wrong, no idea
     BFS();
 
-    void add(const Point & point);
-    Point pop();
-    Point peek() const;
+    void add(const BTCGraph & BTCGraph);
+    BTCGraph pop();
+    BTCGraph peek() const;
     bool empty() const;
 
     private:
