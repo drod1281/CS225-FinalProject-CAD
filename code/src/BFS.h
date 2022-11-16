@@ -10,12 +10,13 @@ using namespace std;
 
 class BFS : public BTCGraph{
 //all of these may be wrong, no idea
-    BFS();
+    public:
+        BFS();
 
-    void add(const BTCGraph & BTCGraph);
-    BTCGraph pop();
-    BTCGraph peek() const;
-    bool empty() const;
+        void add(const BTCGraph & BTCGraph);
+        BTCGraph pop();
+        BTCGraph peek() const;
+        bool empty() const;
 
     private:
 
