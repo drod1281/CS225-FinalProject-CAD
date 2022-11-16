@@ -7,3 +7,6 @@
 #include <set>
 #include "DrawGraph.h"
 
+TEST_CASE(){
+    REQUIRE();
+}
