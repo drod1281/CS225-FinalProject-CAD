@@ -7,6 +7,8 @@
 #include <set>
 #include "DrawGraph.h"
 
-TEST_CASE(){
+TEST_CASE("Correct something idk", "[weight=5]") {
+
     REQUIRE();
+
 }
