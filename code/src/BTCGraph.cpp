@@ -5,7 +5,8 @@
 #include <queue>
 
 BTCGraph::BTCGraph(std::string filename) {
-    std::ifstream ifs (filename, std::ifstream::in);
+    std::ifstream ifs;
+    ifs.open(filename, std::ifstream::in);
     std::vector<std::vector<std::string>> content;
     std::vector<std::string> row;
     std::string line, word;
@@ -18,8 +19,8 @@ BTCGraph::BTCGraph(std::string filename) {
             
             while(getline(str, word, ',')) {
                 row.push_back(word);
-                content.push_back(row);
             }
+            content.push_back(row);
         }
     }
 
@@ -40,7 +41,8 @@ BTCGraph::BTCGraph(std::string filename) {
 BTCGraph::~BTCGraph(){}
 
 BTCGraph::BTCGraph() {
-    std::ifstream ifs ("soc-sign-bitcoinotc.csv", std::ifstream::in);
+    std::ifstream ifs;
+    ifs.open("../data/soc-sign-bitcoinotc.csv", std::ifstream::in);
     std::vector<std::vector<std::string>> content;
     std::vector<std::string> row;
     std::string line, word;
@@ -53,8 +55,8 @@ BTCGraph::BTCGraph() {
             
             while(getline(str, word, ',')) {
                 row.push_back(word);
-                content.push_back(row);
             }
+            content.push_back(row);
         }
     }
 
@@ -70,4 +72,9 @@ BTCGraph::BTCGraph() {
             graph_[iter[1]] = vect;
         }
     }
+}
+
+std::vector<std::pair<std::string, int>> BTCGraph::getAdjacencyList(std::string node) {
+    std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(node);
+    return it->second;
 }
