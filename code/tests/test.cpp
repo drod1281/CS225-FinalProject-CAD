@@ -54,17 +54,78 @@ TEST_CASE("Test id 69,100,26,781 work with parameterized constructor") {
     REQUIRE(list781 == correct781);
 }
 
-TEST_CASE("Correct something idk", "[weight=5]") {
-    V2D roster = file_to_V2D("../tests/data/c5_s10_3_roster.csv"); //change to find the right vector of ratee
+TEST_CASE("Test id 2688, 257, 4434, 3025, 2877, 257, 420, 397 work with default constructor") {
+    BTCGraph* graph = new BTCGraph();
+    // std::vector<std::pair<std::string, int>> list2688 = graph->getAdjacencyList("2688");
+    // std::vector<std::pair<std::string, int>> correct2688 = {std::make_pair("304", 1), std::make_pair("2879", -10), std::make_pair("2866", 10), std::make_pair("3034", 1), std::make_pair("2402", 1), std::make_pair("2658", 1), std::make_pair("2934", 2), std::make_pair("3036", 1), std::make_pair("2880", 1), std::make_pair("2763", 2), std::make_pair("2795", -1), std::make_pair("2725", 1), std::make_pair("1317", 1), std::make_pair("2125", 1), std::make_pair("2296", 1), std::make_pair("3239", 1), std::make_pair("2028", 5), std::make_pair("312", -10), std::make_pair("2648", 2), std::make_pair("1810", -3)};
 
-    //change to be the vectors we wrote down
-    const V2D correct_roster = {{"CS577", "JydY", "MnWd", "tnkL"},\
-    {"CS591", "gpDS", "94Ol", "tnkL"}, \
-    {"CS386", "SjC0", "EYge", "Nvu1"}, \
-    {"CS500", "MnWd", "uAcT", "EYge"}, \
-    {"CS395", "gpDS", "EYge", "MnWd"}
-    }; 
+    // REQUIRE(list2688 == correct2688);
 
-    REQUIRE(roster == correct_roster);
+    std::vector<std::pair<std::string, int>> list257 = graph->getAdjacencyList("257");
+    std::vector<std::pair<std::string, int>> correct257 = {std::make_pair("60", 10), std::make_pair("224", 4), std::make_pair("314", 4), std::make_pair("346", 1), std::make_pair("359", 3), std::make_pair("372", 5), std::make_pair("41", 2), std::make_pair("339", 4), std::make_pair("400", 5), std::make_pair("333", 4), std::make_pair("397", 5), std::make_pair("406", 1), std::make_pair("284", 4), std::make_pair("309", 2), std::make_pair("361", 1), std::make_pair("415", 4), std::make_pair("2897", -1), std::make_pair("2877", -1)};
 
+    REQUIRE(list257 == correct257);
+
+    std::vector<std::pair<std::string, int>> list4434 = graph->getAdjacencyList("4434");
+    std::vector<std::pair<std::string, int>> correct4434 = {std::make_pair("3892", 1), std::make_pair("4402", 1), std::make_pair("35", 2), std::make_pair("3642", 1), std::make_pair("4291", 1), std::make_pair("4511", 1), std::make_pair("2942", 1), std::make_pair("4304", 1), std::make_pair("2642", 2), std::make_pair("4554", 1), std::make_pair("1971", 1), std::make_pair("4172", -10), std::make_pair("4551", -10)};
+
+    REQUIRE(list4434 == correct4434);
+
+    std::vector<std::pair<std::string, int>> list3025 = graph->getAdjacencyList("3025");
+    std::vector<std::pair<std::string, int>> correct3025 = {std::make_pair("539", -1), std::make_pair("1396", -2), std::make_pair("1318", 1), std::make_pair("135", -10), std::make_pair("361", -1), std::make_pair("2388", 10)};
+
+    REQUIRE(list3025 == correct3025);
+
+    // std::vector<std::pair<std::string, int>> list2877 = graph->getAdjacencyList("2877");
+    // std::vector<std::pair<std::string, int>> correct2877 = {std::make_pair("2028", 1), std::make_pair("1810", 1), std::make_pair("135", -1), std::make_pair("630", -2), std::make_pair("1648", -1)};
+
+    // REQUIRE(list2877 == correct2877);
+
+    std::vector<std::pair<std::string, int>> list397 = graph->getAdjacencyList("397");
+    std::vector<std::pair<std::string, int>> correct397 = {std::make_pair("257", 5)};
+
+    REQUIRE(list397 == correct397);
+
+    std::vector<std::pair<std::string, int>> list420 = graph->getAdjacencyList("420");
+    std::vector<std::pair<std::string, int>> correct420 = {std::make_pair("257", 6)};
+
+    REQUIRE(list420 == correct420);
+}
+
+TEST_CASE("Test id 2688, 257, 4434, 3025, 2877, 257, 420, 397 work with parameterized constructor") {
+    BTCGraph* graph = new BTCGraph("../data/soc-sign-bitcoinotc.csv");
+    // std::vector<std::pair<std::string, int>> list2688 = graph->getAdjacencyList("2688");
+    // std::vector<std::pair<std::string, int>> correct2688 = {std::make_pair("304", 1), std::make_pair("2879", -10), std::make_pair("2866", 10), std::make_pair("3034", 1), std::make_pair("2402", 1), std::make_pair("2658", 1), std::make_pair("2934", 2), std::make_pair("3036", 1), std::make_pair("2880", 1), std::make_pair("2763", 2), std::make_pair("2795", -1), std::make_pair("2725", 1), std::make_pair("1317", 1), std::make_pair("2125", 1), std::make_pair("2296", 1), std::make_pair("3239", 1), std::make_pair("2028", 5), std::make_pair("312", -10), std::make_pair("2648", 2), std::make_pair("1810", -3)};
+
+    // REQUIRE(list2688 == correct2688);
+
+    std::vector<std::pair<std::string, int>> list257 = graph->getAdjacencyList("257");
+    std::vector<std::pair<std::string, int>> correct257 = {std::make_pair("60", 10), std::make_pair("224", 4), std::make_pair("314", 4), std::make_pair("346", 1), std::make_pair("359", 3), std::make_pair("372", 5), std::make_pair("41", 2), std::make_pair("339", 4), std::make_pair("400", 5), std::make_pair("333", 4), std::make_pair("397", 5), std::make_pair("406", 1), std::make_pair("284", 4), std::make_pair("309", 2), std::make_pair("361", 1), std::make_pair("415", 4), std::make_pair("2897", -1), std::make_pair("2877", -1)};
+
+    REQUIRE(list257 == correct257);
+
+    std::vector<std::pair<std::string, int>> list4434 = graph->getAdjacencyList("4434");
+    std::vector<std::pair<std::string, int>> correct4434 = {std::make_pair("3892", 1), std::make_pair("4402", 1), std::make_pair("35", 2), std::make_pair("3642", 1), std::make_pair("4291", 1), std::make_pair("4511", 1), std::make_pair("2942", 1), std::make_pair("4304", 1), std::make_pair("2642", 2), std::make_pair("4554", 1), std::make_pair("1971", 1), std::make_pair("4172", -10), std::make_pair("4551", -10)};
+
+    REQUIRE(list4434 == correct4434);
+
+    std::vector<std::pair<std::string, int>> list3025 = graph->getAdjacencyList("3025");
+    std::vector<std::pair<std::string, int>> correct3025 = {std::make_pair("539", -1), std::make_pair("1396", -2), std::make_pair("1318", 1), std::make_pair("135", -10), std::make_pair("361", -1), std::make_pair("2388", 10)};
+
+    REQUIRE(list3025 == correct3025);
+
+    // std::vector<std::pair<std::string, int>> list2877 = graph->getAdjacencyList("2877");
+    // std::vector<std::pair<std::string, int>> correct2877 = {std::make_pair("2028", 1), std::make_pair("1810", 1), std::make_pair("135", -1), std::make_pair("630", -2), std::make_pair("1648", -1)};
+
+    // REQUIRE(list2877 == correct2877);
+
+    std::vector<std::pair<std::string, int>> list397 = graph->getAdjacencyList("397");
+    std::vector<std::pair<std::string, int>> correct397 = {std::make_pair("257", 5)};
+
+    REQUIRE(list397 == correct397);
+
+    std::vector<std::pair<std::string, int>> list420 = graph->getAdjacencyList("420");
+    std::vector<std::pair<std::string, int>> correct420 = {std::make_pair("257", 6)};
+
+    REQUIRE(list420 == correct420);
 }
