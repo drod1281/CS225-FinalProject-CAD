@@ -12,11 +12,11 @@ class BFS : public BTCGraph{
     public:
         BFS();
 
-        void add(const BTCGraph & BTCGraph);
+        void add(const std::string& str);
         BTCGraph pop();
         BTCGraph peek() const;
         bool empty() const;
 
     private:
-        std::queue<> bfs_;
+        std::queue<std::string> bfs_;
 };

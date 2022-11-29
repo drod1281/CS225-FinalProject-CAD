@@ -2,8 +2,8 @@
 
 BFS::BFS(){}
 
-void BFS::add(const BTCGraph & BTCGraph){
-    bfs_.push_back();
+void BFS::add(const std::string& str){
+    bfs_.push(str);
 }
 
 BTCGraph BFS::pop(){
