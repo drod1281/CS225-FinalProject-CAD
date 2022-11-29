@@ -9,7 +9,6 @@
 using namespace std;
 
 class BFS : public BTCGraph{
-//all of these may be wrong, no idea
     public:
         BFS();
 
@@ -19,5 +18,5 @@ class BFS : public BTCGraph{
         bool empty() const;
 
     private:
-
+        std::queue<> bfs_;
 };
