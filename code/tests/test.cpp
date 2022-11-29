@@ -193,3 +193,43 @@ TEST_CASE("Test id 72, 111, 767, 921, 347 work with parameterized constructor") 
  
     REQUIRE(list347 == correct347);
 }
+
+TEST_CASE("Test averages") {
+    BTCGraph* graph = new BTCGraph("../data/soc-sign-bitcoinotc.csv");
+
+    double avg2688 = graph->getAverage("2688");
+    double correctAvg2688 = ((1 - 10 + 10 + 1 + 1 + 1 + 2 + 1 + 1 + 2 - 1 + 1 + 1 + 1 + 1 + 1 + 5 - 10 + 2 - 3) / 20);
+ 
+    REQUIRE(avg2688 == correctAvg2688);
+ 
+    double avg257 = graph->getAverage("257");
+    double correctAvg257 = ((10 + 4 + 4 + 1 + 3 + 5 + 2 + 4 + 5 + 4 + 5 + 1 + 4 + 2 + 1 + 4 - 1 - 1) / 18);
+ 
+    REQUIRE(avg257 == correctAvg257);
+
+    double avg4434 = graph->getAverage("4434");
+    double correctAvg4434 = ((1 + 1 + 2 + 1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 - 10 - 10) / 13);
+ 
+    REQUIRE(avg4434 == correctAvg4434);
+
+    double avg3025 = graph->getAverage("3025");
+    double correctAvg3025 = ((1 - 1 - 2 - 10 - 1 + 10) / 6);
+ 
+    REQUIRE(avg3025 == correctAvg3025);
+
+    double avg2877 = graph->getAverage("2877");
+    double correctAvg2877 = ((1 + 1 - 1 - 2 - 1) / 5);
+ 
+    REQUIRE(avg2877 == correctAvg2877);
+
+    // double avg = graph->getAverage("");
+    // double correctAvg = (() / );
+ 
+    // REQUIRE(avg == correctAvg);
+
+    // double avg = graph->getAverage("");
+    // double correctAvg = (() / );
+ 
+    // REQUIRE(avg == correctAvg);
+ 
+}

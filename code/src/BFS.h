@@ -13,8 +13,8 @@ class BFS : public BTCGraph{
         BFS();
 
         void add(const std::string& str);
-        BTCGraph pop();
-        BTCGraph peek() const;
+        std::string pop();
+        std::string peek() const;
         bool empty() const;
 
     private:

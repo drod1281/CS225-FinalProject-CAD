@@ -6,13 +6,13 @@ void BFS::add(const std::string& str){
     bfs_.push(str);
 }
 
-BTCGraph BFS::pop(){
-    BTCGraph currentPoint = bfs_.front(); //might not be BTCGraph type but list
+std::string BFS::pop(){
+    std::string currentPoint = bfs_.front();
     bfs_.pop();
     return currentPoint;
 }
 
-BTCGraph BFS::peek() const{
+std::string BFS::peek() const{
     return bfs_.front();
 }
 
