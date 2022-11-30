@@ -123,6 +123,18 @@ double BTCGraph::getAverage(std::string node) {
     if (it != averages_.end()) {
         return it->second;
     } else {
-        return -11.0;
+        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(node);
+        if (iter != graph_.end()) {
+            std::vector<std::pair<std::string, int>> list = iter->second;
+            double sum = 0;
+            for (size_t i = 0; i < list.size(); i++) {
+                sum += (double)list[i].second;
+            }
+            double average = sum / (double)list.size();
+            averages_[iter->first] = average;
+            return average;
+        } else {
+            return -11.0;
+        }
     }
 }
