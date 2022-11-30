@@ -10,10 +10,11 @@
 
 using namespace std;
 
-class BTCGraph {
+class Prim {
     public:
         PrimMST();
         PrimMST(unordered_map<string, double> & averages_, string & startPoint);
 
     private:
+        
 };
