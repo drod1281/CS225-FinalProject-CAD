@@ -78,7 +78,7 @@ TEST_CASE("Test id 2688, 257, 4434, 3025, 2877, 257, 420, 397 work with default 
     REQUIRE(list3025 == correct3025);
 
     std::vector<std::pair<std::string, int>> list2877 = graph->getAdjacencyList("2877");
-    std::vector<std::pair<std::string, int>> correct2877 = {std::make_pair("2028", 1), std::make_pair("1810", 1), std::make_pair("135", -1), std::make_pair("630", -2), std::make_pair("1648", -1)};
+    std::vector<std::pair<std::string, int>> correct2877 = {std::make_pair("2028", 1), std::make_pair("1810", 1), std::make_pair("135", -2), std::make_pair("630", -2), std::make_pair("1648", -1)};
 
     REQUIRE(list2877.at(0) == correct2877.at(0));
     REQUIRE(list2877.at(list2877.size() - 1) == correct2877.at(correct2877.size() - 1));
@@ -118,7 +118,7 @@ TEST_CASE("Test id 2688, 257, 4434, 3025, 2877, 257, 420, 397 work with paramete
     REQUIRE(list3025 == correct3025);
 
     std::vector<std::pair<std::string, int>> list2877 = graph->getAdjacencyList("2877");
-    std::vector<std::pair<std::string, int>> correct2877 = {std::make_pair("2028", 1), std::make_pair("1810", 1), std::make_pair("135", -1), std::make_pair("630", -2), std::make_pair("1648", -1)};
+    std::vector<std::pair<std::string, int>> correct2877 = {std::make_pair("2028", 1), std::make_pair("1810", 1), std::make_pair("135", -2), std::make_pair("630", -2), std::make_pair("1648", -1)};
 
     REQUIRE(list2877.at(0) == correct2877.at(0));
     REQUIRE(list2877.at(list2877.size() - 1) == correct2877.at(correct2877.size() - 1));
@@ -232,14 +232,61 @@ TEST_CASE("Test averages") {
  
     REQUIRE(avg420 == correctAvg420);
 
-    // double avg = graph->getAverage("");
-    // double correctAvg = (() / );
  
-    // REQUIRE(avg == correctAvg);
+}
 
-    // double avg = graph->getAverage("");
-    // double correctAvg = (() / );
+
+TEST_CASE("test averages 69, 100, 26, 781") {
+    BTCGraph* graph = new BTCGraph("../data/soc-sign-bitcoinotc.csv");
+    
+    double avg69 = graph->getAverage("69");
+    double correctAvg69 = ((1.0 + 2.0 + 1.0 + 3.0 + 1.0 + 2.0 + 1.0 + 1.0 + 3.0) / 9.0);
  
-    // REQUIRE(avg == correctAvg);
+    REQUIRE(avg69 == correctAvg69);
+    
+    double avg100 = graph->getAverage("100");
+    double correctAvg100 = ((2.0 + 1.0 + 1.0 + 1.0 + 2.0 + 1.0 + 1.0 + 1.0) / 8.0);
+ 
+    REQUIRE(avg100 == correctAvg100);
+
+    double avg26 = graph->getAverage("26");
+    double correctAvg26 = ((1.0 + 1.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0 + 1.0 + 2.0 + 1.0 + 1.0) / 11.0);
+ 
+    REQUIRE(avg26 == correctAvg26);
+    
+    double avg781 = graph->getAverage("781");
+    double correctAvg781 = (() / );
+ 
+    REQUIRE(avg == correctAvg);
+}
+
+
+TEST_CASE("test avg 72, 111, 767, 921, 347"){
+   BTCGraph* graph = new BTCGraph("../data/soc-sign-bitcoinotc.csv");
+
+    double avg72 = graph->getAverage("72");
+    double correctAvg72 = ((4.0 + 2.0 + 3.0 + 2.0 + 1.0 + 1.0 + 1.0 + 1.0 + 5.0 + 1.0 + 1.0) / 11.0);
+ 
+    REQUIRE(avg72 == correctAvg72);
+    
+    double avg111 = graph->getAverage("111");
+    double correctAvg111 = ((1.0 + 1.0 + 2.0 + 10.0 + 4.0 + 1.0) / 6.0);
+ 
+    REQUIRE(avg111 == correctAvg111);
+    
+    double avg767 = graph->getAverage("767");
+    double correctAvg767 = ((5.0 + 1.0 + 1.0 + 1.0 + 1.0 + 1.0 + 2.0 + 1.0 + 1.0 + 1.0+ 1.0 + 2.0) / 12.0);
+ 
+    REQUIRE(avg767 == correctAvg767);
+
+    double avg921 = graph->getAverage("921");
+    double correctAvg921 = ((2.0 + 2.0 + 10.0 + 2.0 + 3.0 + 1.0 + 1.0 + 3.0 + 4.0 + 3.0 + 4.0 + 3.0) / 12);
+ 
+    REQUIRE(avg921 == correctAvg921);
+
+    double avg347 = graph->getAverage("347");
+    double correctAvg347 = ((1.0 + 2.0 + 1.0 + 1.0 + 2.0 + 3.0 + 1.0 - 10.0) /8);
+ 
+    REQUIRE(avg347 == correctAvg347); 
  
 }
