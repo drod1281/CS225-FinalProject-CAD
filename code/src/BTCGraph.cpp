@@ -3,7 +3,6 @@
 #include <cmath>
 #include <list>
 #include <queue>
-#include <BFS.h>
 
 BTCGraph::BTCGraph(std::string filename) {
     std::ifstream ifs;
@@ -94,19 +93,20 @@ std::vector<std::pair<std::string, int>> BTCGraph::getAdjacencyList(std::string 
 }
 
 void BTCGraph::makeAverageMap(){
-    BFS* bfs = new BFS();
+    std::queue<std::string> q;
     std::set<std::string> inside;
-    bfs->add(startPoint);
+    q.push(startPoint);
     inside.insert(startPoint);
-    while (!bfs->empty()) {
-        std::string curr = bfs->pop();
+    while (!q.empty()) {
+        std::string curr = q.front();
+        q.pop();
         std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(curr);
         if (iter != graph_.end()) {
             std::vector<std::pair<std::string, int>> list = iter->second;
             double sum = 0;
             for (size_t i = 0; i < list.size(); i++) {
                 if (inside.find(list[i].first) == inside.end()) {
-                    bfs->add(list[i].first);
+                    q.push(list[i].first);
                     inside.insert(list[i].first);
                 }
                 sum += (double)list[i].second;
