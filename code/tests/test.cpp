@@ -99,7 +99,7 @@ TEST_CASE("Test id 2688, 257, 4434, 3025, 2877, 257, 420, 397 work with paramete
     std::vector<std::pair<std::string, int>> list2688 = graph->getAdjacencyList("2688");
     std::vector<std::pair<std::string, int>> correct2688 = {std::make_pair("304", 1), std::make_pair("2879", -10), std::make_pair("2866", 10), std::make_pair("3034", 1), std::make_pair("2402", 1), std::make_pair("2658", 1), std::make_pair("2934", 2), std::make_pair("3036", 1), std::make_pair("2880", 1), std::make_pair("2763", 2), std::make_pair("2795", -1), std::make_pair("2725", 1), std::make_pair("1317", 1), std::make_pair("2125", 1), std::make_pair("2296", 1), std::make_pair("3239", 1), std::make_pair("2028", 5), std::make_pair("312", -10), std::make_pair("2648", 2), std::make_pair("1810", -3)};
 
-    REQUIRE(list2688.at(0) == correct2688.at(0));
+    REQUIRE(list2688 == correct2688);
     REQUIRE(list2688.at(list2688.size() - 1) == correct2688.at(correct2688.size() - 1));
 
     std::vector<std::pair<std::string, int>> list257 = graph->getAdjacencyList("257");
@@ -215,7 +215,7 @@ TEST_CASE("Test averages") {
     double avg3025 = graph->getAverage("3025");
     double correctAvg3025 = ((1.0 - 1.0 - 2.0 - 10.0 - 1.0 + 10.0) / 6.0);
  
-    REQUIRE(avg3025 == correctAvg3025);
+    REQUIRE(avg3025 == correctAvg3025); //BFS doesn't reach
 
     double avg2877 = graph->getAverage("2877");
     double correctAvg2877 = ((1.0 + 1.0 - 2.0 - 2.0 - 1.0) / 5.0);
@@ -230,7 +230,7 @@ TEST_CASE("Test averages") {
     double avg420 = graph->getAverage("420");
     double correctAvg420 = (6.0);
  
-    REQUIRE(avg420 == correctAvg420);
+    REQUIRE(avg420 == correctAvg420); //BFS doesn't reach
 
  
 }

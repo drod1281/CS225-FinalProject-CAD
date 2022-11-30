@@ -8,39 +8,48 @@
 
 using namespace std;
 
-void Prim::PrimMST(){}
+Prim::PrimMST(){}
 
-void Prim::PrimMST(unordered_map<string, double> & averages_, string & startPoint){
-    auto vert_selector = [](auto pair){return pair.first;};
+Prim::PrimMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, unordered_map<string, double> & averages_, string & startPoint){
+    buildMST(graph, averages_, startPoint);
+}   
+
+
+void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, unordered_map<string, double> & averages_, string & startPoint) {
+    auto vert_selector = [](auto pair){return pair.first};
     
-    vector<string> vert(averages_.size());
-    vector<double> d(averages_.size());
-    vector<string> p(averages_.size());
-
-    std::transform(averages.begin(), averages_.end(), vert.begin(), vert_selector);
-
-    for(auto string v: averages_){
-        d[v] = +inf;
-        p[v] = NULL;
-    }
-    d[startPoint] = 0
+    vector<string> vert(graph.size());
+    std::transform(graph.begin(), graph.end(), vert.begin(), vert_selector);
+    std::set<std::string> inside;
 
     heap<string> heap;
     heap.buildHeap(vert);
 
 
-    for(int i = 0; i < n; i++){
+    while (inside.size() != graph.size()){
         string m = heap.pop(); //removeMin, make minHeap
-        mst.push_back(m);
-        for(string v : ) //find neighbors of m
-            if(const(v, m) < d[v])
-                d[v] = cost(v, m);
-                p[v] = m;
+        inside.insert(m);
+        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph.find(m);
+        if (it != graph.end()) {
+            std::vector<std::pair<std::string, int>> copy;
+            for (size_t i = 0; i < it->second.size(); i++) {
+                if (inside.find(it->second.at(i)) == inside.end()) {
+                    copy.push_back(it->second.at(i));
+                }
+            }
+            std::pair<std::string, int> least = copy.at(0);
+            for (std::pair<std::string, int> x : copy) {
+                if (x.second < least.second) {
+                    least = x;
+                }
+            }
+            mst[m] = least;
+        }
     }
 
     return mst;
-}   
+}
 
-double Prim::cost(string & v, string & m){
-
+unordered_map<string, std::pair<std::string, int>> Prim::getMST() {
+    return mst;
 }

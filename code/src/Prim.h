@@ -7,15 +7,17 @@
 #include <sstream>
 #include <unordered_map>
 #include <set>
+#include <map>
 
 using namespace std;
 
 class Prim {
     public:
-        void PrimMST();
-        void PrimMST(unordered_map<string, double> & averages_, string & startPoint);
-        double cost(string & v, string & m);
+        PrimMST();
+        PrimMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, unordered_map<string, double> & averages_, string & startPoint);
+        unordered_map<string, std::pair<std::string, int>> getMST();
+        void buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, unordered_map<string, double> & averages_, string & startPoint);
 
     private:
-        unordered_map<string, double> mst; //help
+        unordered_map<string, std::pair<std::string, int>> mst; //help
 };

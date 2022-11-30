@@ -92,7 +92,7 @@ std::vector<std::pair<std::string, int>> BTCGraph::getAdjacencyList(std::string 
     }
 }
 
-void BTCGraph::makeAverageMap(){
+void BTCGraph::makeAverageMap(){ //make sure we have destination vertex in graph, the vertices that dont get reached dont send out any ratings.
     std::queue<std::string> q;
     std::set<std::string> inside;
     q.push(startPoint);
