@@ -208,19 +208,29 @@ TEST_CASE("Test averages") {
     REQUIRE(avg257 == correctAvg257);
 
     double avg4434 = graph->getAverage("4434");
-    double correctAvg4434 = ((1 + 1 + 2 + 1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 - 10 - 10) / 13);
+    double correctAvg4434 = ((1.0 + 1.0 + 2.0 + 1.0 + 1.0 + 1.0 + 1.0 + 1.0 + 2.0 + 1.0 + 1.0 - 10.0 - 10.0) / 13.0);
  
     REQUIRE(avg4434 == correctAvg4434);
 
     double avg3025 = graph->getAverage("3025");
-    double correctAvg3025 = ((1 - 1 - 2 - 10 - 1 + 10) / 6);
+    double correctAvg3025 = ((1.0 - 1.0 - 2.0 - 10.0 - 1.0 + 10.0) / 6.0);
  
     REQUIRE(avg3025 == correctAvg3025);
 
     double avg2877 = graph->getAverage("2877");
-    double correctAvg2877 = ((1 + 1 - 1 - 2 - 1) / 5);
+    double correctAvg2877 = ((1.0 + 1.0 - 1.0 - 2.0 - 1.0) / 5.0);
  
     REQUIRE(avg2877 == correctAvg2877);
+
+    double avg397 = graph->getAverage("397");
+    double correctAvg397 = (5.0);
+ 
+    REQUIRE(avg397 == correctAvg397);
+
+    double avg420 = graph->getAverage("420");
+    double correctAvg420 = (6.0);
+ 
+    REQUIRE(avg420 == correctAvg420);
 
     // double avg = graph->getAverage("");
     // double correctAvg = (() / );
