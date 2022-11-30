@@ -1,4 +1,5 @@
 #include "Prim.h"
+#include "heap.h"
 #include <iterator>
 #include <cmath>
 #include <list>
@@ -23,4 +24,19 @@ Prim::PrimMST(unordered_map<string, double> & averages_, string & startPoint){
         p[v] = NULL;
     }
     d[startPoint] = 0
-}
+
+    heap<string> heap;
+    heap.buildHeap(vert);
+
+
+    for(int i = 0; i < n; i++){
+        string m = heap.pop(); //removeMin, make minHeap
+        mst.push_back(m);
+        for(string v : ) //find neighbors of m
+            if(const(v, m) < d[v])
+                d[v] = cost(v, m);
+                p[v] = m;
+    }
+
+    return mst;
+}   

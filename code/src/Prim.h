@@ -14,7 +14,8 @@ class Prim {
     public:
         PrimMST();
         PrimMST(unordered_map<string, double> & averages_, string & startPoint);
+        cost(string & v, string & m);
 
     private:
-        
+        idk<string, double> mst; //help
 };
