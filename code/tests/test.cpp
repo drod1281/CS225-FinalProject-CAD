@@ -222,6 +222,16 @@ TEST_CASE("Test averages") {
  
     REQUIRE(avg2877 == correctAvg2877);
 
+    double avg397 = graph->getAverage("397");
+    double correctAvg397 = (5.0);
+ 
+    REQUIRE(avg397 == correctAvg397);
+
+    double avg420 = graph->getAverage("420");
+    double correctAvg420 = (6.0);
+ 
+    REQUIRE(avg420 == correctAvg420);
+
     // double avg = graph->getAverage("");
     // double correctAvg = (() / );
  
