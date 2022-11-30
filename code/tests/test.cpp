@@ -280,12 +280,12 @@ TEST_CASE("test avg 72, 111, 767, 921, 347"){
     REQUIRE(avg767 == correctAvg767);
 
     double avg921 = graph->getAverage("921");
-    double correctAvg921 = ((2.0 + 2.0 + 10.0 + 2.0 + 3.0 + 1.0 + 1.0 + 3.0 + 4.0 + 3.0 + 4.0 + 3.0) / 12);
+    double correctAvg921 = ((2.0 + 2.0 + 10.0 + 2.0 + 3.0 + 1.0 + 1.0 + 3.0 + 4.0 + 3.0 + 4.0 + 3.0) / 12.0);
  
     REQUIRE(avg921 == correctAvg921);
 
     double avg347 = graph->getAverage("347");
-    double correctAvg347 = ((1.0 + 2.0 + 1.0 + 1.0 + 2.0 + 3.0 + 1.0 - 10.0) /8);
+    double correctAvg347 = ((1.0 + 2.0 + 1.0 + 1.0 + 2.0 + 3.0 + 1.0 - 10.0) / 8.0);
  
     REQUIRE(avg347 == correctAvg347); 
  
