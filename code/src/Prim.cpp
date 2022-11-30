@@ -40,3 +40,7 @@ Prim::PrimMST(unordered_map<string, double> & averages_, string & startPoint){
 
     return mst;
 }   
+
+Prim::cost(string & v, string & m){
+    
+}
