@@ -8,9 +8,9 @@
 
 using namespace std;
 
-Prim::PrimMST(){}
+void Prim::PrimMST(){}
 
-Prim::PrimMST(unordered_map<string, double> & averages_, string & startPoint){
+void Prim::PrimMST(unordered_map<string, double> & averages_, string & startPoint){
     auto vert_selector = [](auto pair){return pair.first;};
     
     vector<string> vert(averages_.size());
@@ -41,6 +41,6 @@ Prim::PrimMST(unordered_map<string, double> & averages_, string & startPoint){
     return mst;
 }   
 
-Prim::cost(string & v, string & m){
-    
+double Prim::cost(string & v, string & m){
+
 }

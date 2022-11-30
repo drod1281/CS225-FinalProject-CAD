@@ -12,10 +12,10 @@ using namespace std;
 
 class Prim {
     public:
-        PrimMST();
-        PrimMST(unordered_map<string, double> & averages_, string & startPoint);
-        cost(string & v, string & m);
+        void PrimMST();
+        void PrimMST(unordered_map<string, double> & averages_, string & startPoint);
+        double cost(string & v, string & m);
 
     private:
-        idk<string, double> mst; //help
+        unordered_map<string, double> mst; //help
 };
