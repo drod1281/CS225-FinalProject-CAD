@@ -10,17 +10,26 @@ using namespace std;
 
 Prim::PrimMST(){}
 
-Prim::PrimMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, unordered_map<string, double> & averages_, string & startPoint){
-    buildMST(graph, averages_, startPoint);
+Prim::PrimMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint){
+    buildMST(graph, startPoint);
 }   
 
 
-void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, unordered_map<string, double> & averages_, string & startPoint) {
+void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, string & startPoint) {
     auto vert_selector = [](auto pair){return pair.first};
     
     vector<string> vert(graph.size());
     std::transform(graph.begin(), graph.end(), vert.begin(), vert_selector);
     std::set<std::string> inside;
+
+    std::map<std::string, int> d;
+    std::map<std::string, std::string> p;
+
+    for (std::string v : vert) {
+        d[v] = std::numeric_limits<int>::max();
+        p[v] = " ";
+    }
+    d[startPoint] = 0;
 
     heap<string> heap;
     heap.buildHeap(vert);
@@ -37,17 +46,21 @@ void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string
                     copy.push_back(it->second.at(i));
                 }
             }
-            std::pair<std::string, int> least = copy.at(0);
             for (std::pair<std::string, int> x : copy) {
-                if (x.second < least.second) {
-                    least = x;
+                if (x.second < d[x]) {
+                    d[x] = x.second;
+                    p[x] = m;
                 }
             }
-            mst[m] = least;
         }
     }
 
-    return mst;
+    for (std::map<std::string, std::string>::iterator it = p.begin(); it != p.end(); it++) {
+        std::map<std::string, int>::iterator rating = d.find(it->first);
+        if (rating != d.end()) {
+            mst[it->second] = std::make_pair(it->first, rating->second);
+        }
+    }
 }
 
 unordered_map<string, std::pair<std::string, int>> Prim::getMST() {
