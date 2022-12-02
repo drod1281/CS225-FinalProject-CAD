@@ -58,7 +58,14 @@ void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string
     for (std::map<std::string, std::string>::iterator it = p.begin(); it != p.end(); it++) {
         std::map<std::string, int>::iterator rating = d.find(it->first);
         if (rating != d.end()) {
-            mst[it->second] = std::make_pair(it->first, rating->second);
+            unordered_map<string, std::vector<std::pair<std::string, int>>>::iterator m = mst.find(it->second);
+            if (m != mst.end()) {
+                m->second.push_back(std::make_pair(it->first, rating->second));
+            } else {
+                std::vector<std::pair<std::string, int>> vect;
+                vect.push_back(std::make_pair(it->first, rating->second));
+                mst[it->second] = vect;
+            }
         }
     }
 }

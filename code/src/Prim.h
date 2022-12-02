@@ -20,5 +20,5 @@ class Prim {
         void buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint);
 
     private:
-        unordered_map<string, std::pair<std::string, int>> mst; //help
+        std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst;
 };
