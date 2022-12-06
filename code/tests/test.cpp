@@ -293,7 +293,7 @@ TEST_CASE("test avg 72, 111, 767, 921, 347"){
 
 TEST_CASE("prim"){
     BTCGraph* graph = new BTCGraph("../data/soc-sign-bitcoinotc.csv");
-    Prim* prim = new PrimMST(graph, "420");
+    Prim* prim = new Prim(graph, "420");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
 
     for (int i = 0; i < (int) mst.size(); ++i){

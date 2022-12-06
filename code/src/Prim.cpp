@@ -8,9 +8,9 @@
 
 using namespace std;
 
-Prim::PrimMST(){}
+Prim::Prim(){}
 
-Prim::PrimMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint){
+Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint){
     buildMST(graph, startPoint);
 }   
 
