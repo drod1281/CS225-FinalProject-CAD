@@ -290,3 +290,17 @@ TEST_CASE("test avg 72, 111, 767, 921, 347"){
     REQUIRE(avg347 == correctAvg347); 
  
 }
+
+TEST_CASE("prim"){
+    BTCGraph* graph = new BTCGraph("../data/soc-sign-bitcoinotc.csv");
+    Prim* prim = new PrimMST(graph, "420");
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+
+    for (int i = 0; i < (int) mst.size(); ++i){
+        std::cout << "{ ";
+        for(int j = 0; j < (int) mst[i].size()-1; ++j){
+        std::cout << "\"" << mst[i][j] << "\", ";
+        }
+        std::cout << "\"" << mst[i][mst[i].size()-1] << "\"}, \\" << std::endl;
+    }
+}
