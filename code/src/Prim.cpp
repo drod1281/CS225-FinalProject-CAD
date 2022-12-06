@@ -1,5 +1,4 @@
 #include "Prim.h"
-#include "heap.h"
 #include <iterator>
 #include <cmath>
 #include <list>
