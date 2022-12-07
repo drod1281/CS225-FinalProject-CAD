@@ -7,6 +7,7 @@
 #include <set>
 #include "DrawGraph.h"
 #include "BTCGraph.h"
+#include "Prim.h"
 
 TEST_CASE("Test id 69,100,26,781 work with default constructor") {
     BTCGraph* graph = new BTCGraph();
