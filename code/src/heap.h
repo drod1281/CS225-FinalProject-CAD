@@ -199,4 +199,4 @@ class heap
     void heapifyUp(size_t currentIdx);
 };
 
-#include "heap.hpp"
+#include "heap.cpp"
