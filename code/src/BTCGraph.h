@@ -7,6 +7,8 @@
 #include <sstream>
 #include <unordered_map>
 #include <set>
+#include <Graphviz/bin/cgraph.exp>
+#include <Graphviz/bin/gvc.exp>
 
 using namespace std;
 
@@ -19,6 +21,7 @@ class BTCGraph {
         double getAverage(std::string node);
         void makeAverageMap();
         unordered_map<string, std::vector<std::pair<std::string, int>>> getGraph();
+        void printGraph();
     
     private:
         unordered_map<string, vector<pair<string, int>>> graph_;
