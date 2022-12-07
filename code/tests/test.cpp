@@ -292,17 +292,17 @@ TEST_CASE("test avg 72, 111, 767, 921, 347"){
  
 }
 
-// TEST_CASE("prim"){
-//     BTCGraph* graph = new BTCGraph("../data/soc-sign-bitcoinotc.csv");
-//     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph->getGraph();
-//     std::string start = "420";
-//     Prim* prim = new Prim(graph_, start);
-//     std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim->getMST();
+TEST_CASE("prim"){
+    BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
+    std::string start = "420";
+    Prim prim(graph_, start);
+    //std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
 
-//     std::vector<std::pair<std::string, int>> vect420 = mst.at("420");
+    // std::vector<std::pair<std::string, int>> vect420 = mst.at("420");
 
-//     for (int i = 0; i < (int) vect420.size(); ++i){
-//         std::cout << "{ ";
-//         std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
-//     }
-// }
+    // for (int i = 0; i < (int) vect420.size(); ++i){
+    //     std::cout << "{ ";
+    //     std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
+    // }
+}
