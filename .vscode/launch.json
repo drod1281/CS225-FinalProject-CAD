@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": true,
       "externalConsole": false,
-      "cwd": "/Users/alex/Desktop/CS225FinalProject/CS225-FinalProject-CAD/code",
-      "program": "/Users/alex/Desktop/CS225FinalProject/CS225-FinalProject-CAD/code/build/Debug/outDebug",
+      "cwd": "/Users/alex/Desktop/CS225-FinalProject-CAD",
+      "program": "/Users/alex/Desktop/CS225-FinalProject-CAD/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb"
     }

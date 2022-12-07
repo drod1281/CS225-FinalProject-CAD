@@ -138,3 +138,7 @@ double BTCGraph::getAverage(std::string node) {
         }
     }
 }
+
+unordered_map<string, std::vector<std::pair<std::string, int>>> BTCGraph::getGraph() {
+    return graph_;
+}

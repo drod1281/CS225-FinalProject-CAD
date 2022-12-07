@@ -18,6 +18,7 @@ class BTCGraph {
         std::vector<std::pair<std::string, int>> getAdjacencyList(std::string node);
         double getAverage(std::string node);
         void makeAverageMap();
+        unordered_map<string, std::vector<std::pair<std::string, int>>> getGraph();
     
     private:
         unordered_map<string, vector<pair<string, int>>> graph_;
