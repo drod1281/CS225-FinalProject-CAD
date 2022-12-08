@@ -15,9 +15,9 @@ using namespace std;
 class Prim {
     public:
         Prim();
-        Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint);
+        Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, std::vector<std::string> keys, string & startPoint);
         unordered_map<string, std::vector<std::pair<std::string, int>>> getMST();
-        void buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint);
+        void buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, std::vector<std::string> keys, string & startPoint);
 
     private:
         std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst;

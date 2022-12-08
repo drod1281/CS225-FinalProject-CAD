@@ -10,28 +10,25 @@ using namespace std;
 
 Prim::Prim(){}
 
-Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint){
-    buildMST(graph, startPoint);
+Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, std::vector<std::string> keys,  string & startPoint){
+    buildMST(graph, keys, startPoint);
 }   
 
 
-void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, string & startPoint) {
-    auto vert_selector = [](auto pair){return pair.first;};
+void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, std::vector<std::string> keys, string & startPoint) {
     
-    vector<string> vert(graph.size());
-    std::transform(graph.begin(), graph.end(), vert.begin(), vert_selector);
     std::set<std::string> inside;
 
     std::map<std::string, int> d;
     std::map<std::string, std::string> p;
 
-    for (std::string v : vert) {
+    for (std::string v : keys) {
         d[v] = std::numeric_limits<int>::max();
         p[v] = " ";
     }
     d[startPoint] = 0;
 
-    heap<string> heap(vert);
+    heap<string> heap(keys);
 
 
     while (inside.size() != graph.size()){
@@ -40,14 +37,15 @@ void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string
         std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph.find(m);
         if (it != graph.end()) {
             std::vector<std::pair<std::string, int>> copy;
-            for (size_t i = 0; i < it->second.size(); i++) {
-                std::set<std::string>::iterator curr = inside.find(it->second.at(i).first);
+            std::vector<std::pair<std::string, int>> list = it->second;
+            for (size_t i = 0; i < list.size(); i++) {
+                std::set<std::string>::iterator curr = inside.find(list.at(i).first);
                 if (curr == inside.end()) {
-                    copy.push_back(it->second.at(i));
+                    copy.push_back(list.at(i));
                 }
             }
             for (std::pair<std::string, int> x : copy) {
-                if (x.second < d.at(x.first)) {
+                if (x.second < d[x.first]) {
                     d[x.first] = x.second;
                     p[x.first] = m;
                 }
