@@ -292,18 +292,59 @@ TEST_CASE("test avg 72, 111, 767, 921, 347"){
  
 }
 
-TEST_CASE("prim"){
+TEST_CASE("prim 1201"){
+    std::cout << " " << std::endl;
+    std::cout << "Prim MST for: 1201 --" << std::endl;
     BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
     std::vector<std::string> keys = graph.getKeys();
-    std::string start = "420";
+    std::string start = "1201";
     Prim prim(graph_, keys, start);
-    //std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
 
-    // std::vector<std::pair<std::string, int>> vect420 = mst.at("420");
+    std::vector<std::pair<std::string, int>> vect420 = mst["1201"];
 
-    // for (int i = 0; i < (int) vect420.size(); ++i){
-    //     std::cout << "{ ";
-    //     std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
-    // }
+    for (int i = 0; i < (int) vect420.size(); ++i){
+        std::cout << "{ ";
+        std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
+    }
+    std::cout << " " << std::endl;
+}
+
+TEST_CASE("prim 69"){
+    std::cout << " " << std::endl;
+    std::cout << "Prim MST for: 69 --" << std::endl;
+    BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
+    std::vector<std::string> keys = graph.getKeys();
+    std::string start = "1201";
+    Prim prim(graph_, keys, start);
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+
+    std::vector<std::pair<std::string, int>> vect420 = mst["69"];
+
+    for (int i = 0; i < (int) vect420.size(); ++i){
+        std::cout << "{ ";
+        std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
+    }
+    std::cout << " " << std::endl;
+}
+
+TEST_CASE("prim 4434"){
+    std::cout << " " << std::endl;
+    std::cout << "Prim MST for: 4434 --" << std::endl;
+    BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
+    std::vector<std::string> keys = graph.getKeys();
+    std::string start = "1201";
+    Prim prim(graph_, keys, start);
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+
+    std::vector<std::pair<std::string, int>> vect420 = mst["4434"];
+
+    for (int i = 0; i < (int) vect420.size(); ++i){
+        std::cout << "{ ";
+        std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
+    }
+    std::cout << " " << std::endl;
 }
