@@ -3,6 +3,7 @@
 #include <cmath>
 #include <list>
 #include <queue>
+#include <map>
 #include "cs225/HSLAPixel.h"
 #include "cs225/PNG.h"
 
@@ -176,15 +177,18 @@ void BTCGraph::printGraph() {
 
     // }
 
-    PNG graphPNG(width, height);
+    PNG graphPNG(1000, 1000);
 
     std::map<std::string, std::pair<int, int>> idToCoord;
+    int r = 5;
+
     for(std::string v : keys) {
         int x = (std::rand() % graphPNG.width());
         int y = (std::rand() % graphPNG.height());
         
         bool coordNotInCircle = true;
-        for(std::string coord : idToCoord){
+        for(std::pair<std::string, std::pair<int, int>> vert : idToCoord){
+            std::pair<int, int> coord = vert.second;
             int xInPng = coord.first;
             int yInPng = coord.second;
             if( (x >= (xInPng - r)) && (x <= (xInPng + r)) && (y >= (yInPng - r)) && (y <= (yInPng + r)) ){
@@ -194,9 +198,9 @@ void BTCGraph::printGraph() {
         }
 
         if(coordNotInCircle == true) {
-            idToCoord[v] = (x, y);
-            for(unsigned int i = (x - r); i <= (x + r); i++){
-                for(unsigned int j = (y - r); j<= (y + r); j++){
+            idToCoord[v] = std::make_pair(x, y);
+            for(int i = (x - r); i <= (x + r); i++){
+                for(int j = (y - r); j<= (y + r); j++){
                     if( ( (i - x) * (i - x) ) + ( (j - y) * (j - y) ) <= (r * r) ){
                         graphPNG.getPixel(i, j) = HSLAPixel(0, 1, 0.5);
                     }
