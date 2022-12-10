@@ -211,11 +211,32 @@ void BTCGraph::printGraph() {
         }
     }
 
-    // for(std::string v : keys) {
-    //     for(std::pair<std::string, std::pair<int, int>> vert : idToCoord){
-    //         std::pair<int, int> coord = vert.second;
-    //     }
-    // }
+    for(std::pair<std::string, std::vector<std::pair<std::string, int>>> pairVE : graph_) {
+
+        std::pair<int, int> coord1 = idToCoord[pairVE.first];
+        int x1 = coord1.first;
+        int y1 = coord1.second;
+        for(unsigned long i = 0; i < pairVE.second.size(); i++){
+                std::pair<int, int> coord2 = idToCoord[pairVE.second[i].first];
+                int x2 = coord2.first;
+                int y2 = coord2.second;
+                
+                int dx = (x2 - x1);
+                int dy = (y2 - y1);
+                int sx = (dx >= 0) ? 1 : -1;
+                int sy = (dy >= 0) ? 1 : -1;
+                dx = abs(dx);
+                dy = abs(dy);
+
+                if(dx == dy){
+                    for(int i = 0; i < dx; i++){
+                        graphPNG.getPixel(x1 + i * sx, y1 + i * sy) = HSLAPixel(0, 4, 0.5);
+                    }
+                }
+                //need to finish other if statement for dx != dy
+                //can add counter that gets added to H, S, L to have a different line color per vertix to its vector of edges
+        }
+    }
 
     graphPNG.writeToFile("../drawnGraph.png");
 }

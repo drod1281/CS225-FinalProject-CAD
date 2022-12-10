@@ -25,9 +25,9 @@ class BTCGraph {
         std::vector<std::string> getKeys();
     
     private:
-        unordered_map<string, vector<pair<string, int>>> graph_;
-        unordered_map<string, double> averages_;
+        unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph_;
+        unordered_map<std::string, double> averages_;
         std::vector<std::string> keys;
-        string startPoint;
+        std::string startPoint;
     
 };
