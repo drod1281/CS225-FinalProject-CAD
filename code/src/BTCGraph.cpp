@@ -235,6 +235,48 @@ void BTCGraph::printGraph() {
                 }
                 //need to finish other if statement for dx != dy
                 //can add counter that gets added to H, S, L to have a different line color per vertix to its vector of edges
+                else {
+                    int d = ((dy << 1) - dx);
+                    int d1 = (dy << 1);
+                    int d2 = ((dy - dx) << 1);
+                    int x = x1;
+                    int y = y1;
+                    if((x >= 0) && (x < (int)graphPNG.width()) && (y >= 0) && (y < (int)graphPNG.height())){
+                        graphPNG.getPixel(x, y) = HSLAPixel(0, 4, 0.5);
+                    }
+                    if(dx > dy) {
+                        int p = (d - dx);
+                        while (x != x2) {
+                            x = (x + sx);
+                            if(p > 0){
+                                y = (y + sy);
+                                p = (p + d2);
+                            }
+                            else {
+                                p = (p + d1);
+                            }
+                            if((x >= 0) && (x < (int)graphPNG.width()) && (y >= 0) && (y < (int)graphPNG.height())){
+                                graphPNG.getPixel(x, y) = HSLAPixel(0, 4, 0.5);
+                            }
+                        }
+                    }
+                    else {
+                        int  p = (d - dy);
+                        while (y != y2) {
+                            y = (y + sy);
+                            if(p > 0) {
+                                x = (x + sx);
+                                p = (p + d2);
+                            }
+                            else {
+                                p = (p + d1);
+                            }
+                            if((x >= 0) && (x < (int)graphPNG.width()) && (y >= 0) && (y < (int)graphPNG.height())){
+                                graphPNG.getPixel(x, y) = HSLAPixel(0, 4, 0.5);
+                            }
+                        }
+                    }
+                }
         }
     }
 
