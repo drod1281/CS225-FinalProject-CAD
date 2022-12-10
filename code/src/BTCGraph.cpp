@@ -3,6 +3,11 @@
 #include <cmath>
 #include <list>
 #include <queue>
+#include "cs225/HSLAPixel.h"
+#include "cs225/PNG.h"
+
+using cs225::HSLAPixel;
+using cs225::PNG;
 
 BTCGraph::BTCGraph(std::string filename) {
     std::ifstream ifs;
@@ -170,4 +175,37 @@ void BTCGraph::printGraph() {
     //     }
 
     // }
+
+    PNG graphPNG(width, height);
+
+    std::map<std::string, std::pair<int, int>> idToCoord;
+    for(std::string v : keys) {
+        int x = (std::rand() % graphPNG.width());
+        int y = (std::rand() % graphPNG.height());
+        
+        bool coordNotInCircle = true;
+        for(std::string coord : idToCoord){
+            int xInPng = coord.first;
+            int yInPng = coord.second;
+            if( (x >= (xInPng - r)) && (x <= (xInPng + r)) && (y >= (yInPng - r)) && (y <= (yInPng + r)) ){
+                coordNotInCircle = false;
+                break;
+            }
+        }
+
+        if(coordNotInCircle == true) {
+            idToCoord[v] = (x, y);
+            for(unsigned int i = (x - r); i <= (x + r); i++){
+                for(unsigned int j = (y - r); j<= (y + r); j++){
+                    if( ( (i - x) * (i - x) ) + ( (j - y) * (j - y) ) <= (r * r) ){
+                        graphPNG.getPixel(i, j) = HSLAPixel(0, 1, 0.5);
+                    }
+                }
+            }
+        }
+    }
+
+    //for(std::pair<std::string, >)
+
+    graphPNG.writeToFile("../drawnGraph.png");
 }
