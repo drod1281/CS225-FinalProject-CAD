@@ -233,7 +233,6 @@ void BTCGraph::printGraph() {
                         graphPNG.getPixel(x1 + i * sx, y1 + i * sy) = HSLAPixel(0, 4, 0.5);
                     }
                 }
-                //need to finish other if statement for dx != dy
                 //can add counter that gets added to H, S, L to have a different line color per vertix to its vector of edges
                 else {
                     int d = ((dy << 1) - dx);
