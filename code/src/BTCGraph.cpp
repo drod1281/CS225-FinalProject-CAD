@@ -201,15 +201,21 @@ void BTCGraph::printGraph() {
             idToCoord[v] = std::make_pair(x, y);
             for(int i = (x - r); i <= (x + r); i++){
                 for(int j = (y - r); j<= (y + r); j++){
-                    if( ( (i - x) * (i - x) ) + ( (j - y) * (j - y) ) <= (r * r) ){
-                        graphPNG.getPixel(i, j) = HSLAPixel(0, 1, 0.5);
+                    if((i >= 0) && (i < (int)graphPNG.width()) && (j >= 0) && (j < (int)graphPNG.height())){
+                        if( ( (i - x) * (i - x) ) + ( (j - y) * (j - y) ) <= (r * r) ){
+                            graphPNG.getPixel(i, j) = HSLAPixel(0, 1, 0.5);
+                        }
                     }
                 }
             }
         }
     }
 
-    //for(std::pair<std::string, >)
+    // for(std::string v : keys) {
+    //     for(std::pair<std::string, std::pair<int, int>> vert : idToCoord){
+    //         std::pair<int, int> coord = vert.second;
+    //     }
+    // }
 
     graphPNG.writeToFile("../drawnGraph.png");
 }
