@@ -177,7 +177,7 @@ void BTCGraph::printGraph() {
 
     // }
 
-    PNG graphPNG(10000, 10000);
+    PNG graphPNG((graph_.size() * 2.5), (graph_.size() * 2.5));
 
     std::map<std::string, std::pair<int, int>> idToCoord;
     int r = 5;
