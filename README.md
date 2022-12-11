@@ -1,4 +1,4 @@
-# CS225 Final Project: The Complete California Experience
+# CAD's CS225 Final Project
 
 <p align="center">
   <a href="#presentation-video">Presentation Video</a> •
