@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="./data/graphs/cal.jpg" />
+  <img src="./documents/bitcoin.jpeg" />
 </p>
 
 ## [Presentation Video]()
@@ -68,7 +68,7 @@ This runs CMake to initialize the build directory you created and are currently 
    Prim was created as its own class which takes in a unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, a std::vector<std::string> of just the vertices, and a starting point. Both input datasets can be acquired through the BTCGraph object you created using the getGraph() and getKeys() functions. 
    
 4. printGraph (Force-Directed Graph Drawing):
-   printGraph() is a function of the BTCGraph class which outputs the original data structure as a PNG images with circles represented as circles and line connecting a vertice to all vertices it rated. 
+   printGraph() is a function of the BTCGraph class which outputs the original data structure as a PNG images with circles represented as circles and line connecting a vertice to all vertices it rated.
 
 
 ### Tests
