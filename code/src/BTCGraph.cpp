@@ -29,7 +29,6 @@ BTCGraph::BTCGraph(std::string filename) {
         if (i == 0) {
             startPoint = iter[1];
         }
-        keys.push_back(iter[1]);
         std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(iter[1]);
         int rating = stoi(iter[2]);
         if (it != graph_.end()) {
@@ -70,7 +69,6 @@ BTCGraph::BTCGraph() {
         if (i == 0) {
             startPoint = iter[1];
         }
-        keys.push_back(iter[1]);
         std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(iter[1]);
         int rating = stoi(iter[2]);
         if (it != graph_.end()) {
@@ -145,29 +143,6 @@ unordered_map<string, std::vector<std::pair<std::string, int>>> BTCGraph::getGra
     return graph_;
 }
 
-std::vector<std::string> BTCGraph::getKeys() {
-    return keys;
-}
-
 void BTCGraph::printGraph() {
-    // Agraph_t* graph = agopen("graph", Agstrictdirected, nullptr);
-    // std::queue<std::string> q;
-    // std::set<std::string> inside;
-    // q.push(startPoint);
-    // inside.insert(startPoint);
-    // while (!q.empty()) {
-    //     std::string curr = q.front();
-    //     q.pop();
-    //     std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(curr);
-    //     if (iter != graph_.end()) {
-    //         std::vector<std::pair<std::string, int>> list = iter->second;
-    //         Agnode_t* node = agnode(graph, const_cast<char*>(iter->first.c_str()), 1);
-    //         for (std::pair<std::string, int> dest : list) {
-    //             AGnode_t* dNode = agnode(graph, const_cast<char*>(dest.first.c_str()), 1);
-    //             Agedge_t* edge = agedge(graph, node, dNode, nullptr, 1);
-    //             agsafeset(edge, "weight", to_string(dest.second).c_str(), "");
-    //         }
-    //     }
-
-    // }
+    
 }

@@ -295,15 +295,14 @@ TEST_CASE("test avg 72, 111, 767, 921, 347"){
 TEST_CASE("prim"){
     BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
-    std::vector<std::string> keys = graph.getKeys();
     std::string start = "420";
-    Prim prim(graph_, keys, start);
-    //std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+    Prim prim(graph_, start);
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
 
-    // std::vector<std::pair<std::string, int>> vect420 = mst.at("420");
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>>::iterator it = mst.find("420");
 
-    // for (int i = 0; i < (int) vect420.size(); ++i){
-    //     std::cout << "{ ";
-    //     std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
-    // }
+    for (int i = 0; i < (int) it->second.size(); ++i){
+        std::cout << "{ ";
+        std::cout << "\"" << it->second.at(i).first << "\"}, \\" << std::endl;
+    }
 }

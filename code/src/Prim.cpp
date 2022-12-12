@@ -10,14 +10,19 @@ using namespace std;
 
 Prim::Prim(){}
 
-Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, std::vector<std::string> keys,  string & startPoint){
-    buildMST(graph, keys, startPoint);
+Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint){
+    buildMST(graph, startPoint);
 }   
 
 
-void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, std::vector<std::string> keys, string & startPoint) {
+void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, string & startPoint) {
     
     std::set<std::string> inside;
+    std::vector<std::string> keys;
+
+    for (auto kv : graph) {
+        keys.push_back(kv.first);
+    }
 
     std::map<std::string, int> d;
     std::map<std::string, std::string> p;
@@ -45,9 +50,12 @@ void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string
                 }
             }
             for (std::pair<std::string, int> x : copy) {
-                if (x.second < d[x.first]) {
-                    d[x.first] = x.second;
-                    p[x.first] = m;
+                std::map<std::string, int>::iterator search = d.find(x.first);
+                if (search != d.end()) {
+                    if (x.second < search->second) {
+                        d[x.first] = x.second;
+                        p[x.first] = m;
+                    }
                 }
             }
         }
