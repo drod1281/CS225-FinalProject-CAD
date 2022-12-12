@@ -3,7 +3,7 @@
 <p align="center">
   <a href="#presentation-video">Presentation Video</a> •
   <a href="#data">Data</a> •
-  <a href="#repo-structure">Repository Structure</a> •
+  <a href="#repository-structure">Repository Structure</a> •
   <a href="#running-instructions">Running Instructions</a> •
   <a href="#team">Team</a>
 </p>
