@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="./documents/bitcoin.jpeg" />
+  <a title="bitcoin logo PNG image with transparent background - toppng.com " href="https://toppng.com/free-image/bitcoin-logo-PNG-free-PNG-Images_472507" target="_blank">bitcoin logo PNG image with transparent background<img src="https://toppng.com/uploads/preview/bitcoin-logo-11609355888jfc0e2xxt2.png" alt="bitcoin logo PNG image with transparent background - toppng.com"></a>
 </p>
 
 ## [Presentation Video]()
