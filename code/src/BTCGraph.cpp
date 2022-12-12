@@ -3,6 +3,12 @@
 #include <cmath>
 #include <list>
 #include <queue>
+#include <map>
+#include "cs225/HSLAPixel.h"
+#include "cs225/PNG.h"
+
+using cs225::HSLAPixel;
+using cs225::PNG;
 
 BTCGraph::BTCGraph(std::string filename) {
     std::ifstream ifs;
@@ -144,5 +150,137 @@ unordered_map<string, std::vector<std::pair<std::string, int>>> BTCGraph::getGra
 }
 
 void BTCGraph::printGraph() {
+<<<<<<< HEAD
     
+=======
+    // Agraph_t* graph = agopen("graph", Agstrictdirected, nullptr);
+    // std::queue<std::string> q;
+    // std::set<std::string> inside;
+    // q.push(startPoint);
+    // inside.insert(startPoint);
+    // while (!q.empty()) {
+    //     std::string curr = q.front();
+    //     q.pop();
+    //     std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(curr);
+    //     if (iter != graph_.end()) {
+    //         std::vector<std::pair<std::string, int>> list = iter->second;
+    //         Agnode_t* node = agnode(graph, const_cast<char*>(iter->first.c_str()), 1);
+    //         for (std::pair<std::string, int> dest : list) {
+    //             AGnode_t* dNode = agnode(graph, const_cast<char*>(dest.first.c_str()), 1);
+    //             Agedge_t* edge = agedge(graph, node, dNode, nullptr, 1);
+    //             agsafeset(edge, "weight", to_string(dest.second).c_str(), "");
+    //         }
+    //     }
+
+    // }
+
+    PNG graphPNG((graph_.size() * 2.5), (graph_.size() * 2.5));
+
+    std::map<std::string, std::pair<int, int>> idToCoord;
+    int r = 5;
+
+    for(std::string v : keys) {
+        int x = (std::rand() % graphPNG.width());
+        int y = (std::rand() % graphPNG.height());
+        
+        while (x < 0 || x >= (int)graphPNG.width() || y < 0 || y >= (int)graphPNG.height()) {
+            x = (std::rand() % graphPNG.width());
+            y = (std::rand() % graphPNG.height());
+        }
+
+        bool coordNotInCircle = true;
+        for(std::pair<std::string, std::pair<int, int>> vert : idToCoord){
+            std::pair<int, int> coord = vert.second;
+            int xInPng = coord.first;
+            int yInPng = coord.second;
+            if( (x >= (xInPng - r)) && (x <= (xInPng + r)) && (y >= (yInPng - r)) && (y <= (yInPng + r)) ){
+                coordNotInCircle = false;
+                break;
+            }
+        }
+
+        if(coordNotInCircle == true) {
+            idToCoord[v] = std::make_pair(x, y);
+            for(int i = (x - r); i <= (x + r); i++){
+                for(int j = (y - r); j<= (y + r); j++){
+                    if((i >= 0) && (i < (int)graphPNG.width()) && (j >= 0) && (j < (int)graphPNG.height())){
+                        if( ( (i - x) * (i - x) ) + ( (j - y) * (j - y) ) <= (r * r) ){
+                            graphPNG.getPixel(i, j) = HSLAPixel(0, 1, 0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for(std::pair<std::string, std::vector<std::pair<std::string, int>>> pairVE : graph_) {
+
+        std::pair<int, int> coord1 = idToCoord[pairVE.first];
+        int x1 = coord1.first;
+        int y1 = coord1.second;
+        for(unsigned long i = 0; i < pairVE.second.size(); i++){
+                std::pair<int, int> coord2 = idToCoord[pairVE.second[i].first];
+                int x2 = coord2.first;
+                int y2 = coord2.second;
+                
+                int dx = (x2 - x1);
+                int dy = (y2 - y1);
+                int sx = (dx >= 0) ? 1 : -1;
+                int sy = (dy >= 0) ? 1 : -1;
+                dx = abs(dx);
+                dy = abs(dy);
+
+                if(dx == dy){
+                    for(int i = 0; i < dx; i++){
+                        graphPNG.getPixel(x1 + i * sx, y1 + i * sy) = HSLAPixel(0, 4, 0.5);
+                    }
+                }
+                //can add counter that gets added to H, S, L to have a different line color per vertix to its vector of edges
+                else {
+                    int d = ((dy << 1) - dx);
+                    int d1 = (dy << 1);
+                    int d2 = ((dy - dx) << 1);
+                    int x = x1;
+                    int y = y1;
+                    if((x >= 0) && (x < (int)graphPNG.width()) && (y >= 0) && (y < (int)graphPNG.height())){
+                        graphPNG.getPixel(x, y) = HSLAPixel(0, 4, 0.5);
+                    }
+                    if(dx > dy) {
+                        int p = (d - dx);
+                        while (x != x2) {
+                            x = (x + sx);
+                            if(p > 0){
+                                y = (y + sy);
+                                p = (p + d2);
+                            }
+                            else {
+                                p = (p + d1);
+                            }
+                            if((x >= 0) && (x < (int)graphPNG.width()) && (y >= 0) && (y < (int)graphPNG.height())){
+                                graphPNG.getPixel(x, y) = HSLAPixel(0, 4, 0.5);
+                            }
+                        }
+                    }
+                    else {
+                        int  p = (d - dy);
+                        while (y != y2) {
+                            y = (y + sy);
+                            if(p > 0) {
+                                x = (x + sx);
+                                p = (p + d2);
+                            }
+                            else {
+                                p = (p + d1);
+                            }
+                            if((x >= 0) && (x < (int)graphPNG.width()) && (y >= 0) && (y < (int)graphPNG.height())){
+                                graphPNG.getPixel(x, y) = HSLAPixel(0, 4, 0.5);
+                            }
+                        }
+                    }
+                }
+        }
+    }
+
+    graphPNG.writeToFile("../drawnGraph.png");
+>>>>>>> d315eed4ecc7628334dbdb3a321f7b12933f1482
 }

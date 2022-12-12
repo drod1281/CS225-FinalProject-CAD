@@ -57,6 +57,8 @@ TEST_CASE("Test id 69,100,26,781 work with parameterized constructor") {
 
 TEST_CASE("Test id 2688, 257, 4434, 3025, 2877, 257, 420, 397 work with default constructor") {
     BTCGraph* graph = new BTCGraph();
+    graph->printGraph();
+
     std::vector<std::pair<std::string, int>> list2688 = graph->getAdjacencyList("2688");
     std::vector<std::pair<std::string, int>> correct2688 = {std::make_pair("304", 1), std::make_pair("2879", -10), std::make_pair("2866", 10), std::make_pair("3034", 1), std::make_pair("2402", 1), std::make_pair("2658", 1), std::make_pair("2934", 2), std::make_pair("3036", 1), std::make_pair("2880", 1), std::make_pair("2763", 2), std::make_pair("2795", -1), std::make_pair("2725", 1), std::make_pair("1317", 1), std::make_pair("2125", 1), std::make_pair("2296", 1), std::make_pair("3239", 1), std::make_pair("2028", 5), std::make_pair("312", -10), std::make_pair("2648", 2), std::make_pair("1810", -3)};
 
@@ -292,9 +294,12 @@ TEST_CASE("test avg 72, 111, 767, 921, 347"){
  
 }
 
-TEST_CASE("prim"){
+TEST_CASE("prim 1201"){
+    std::cout << " " << std::endl;
+    std::cout << "Prim MST for: 1201 --" << std::endl;
     BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
+<<<<<<< HEAD
     std::string start = "420";
     Prim prim(graph_, start);
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
@@ -305,4 +310,56 @@ TEST_CASE("prim"){
         std::cout << "{ ";
         std::cout << "\"" << it->second.at(i).first << "\"}, \\" << std::endl;
     }
+=======
+    std::vector<std::string> keys = graph.getKeys();
+    std::string start = "1201";
+    Prim prim(graph_, keys, start);
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+
+    std::vector<std::pair<std::string, int>> vect420 = mst["1201"];
+
+    for (int i = 0; i < (int) vect420.size(); ++i){
+        std::cout << "{ ";
+        std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
+    }
+    std::cout << " " << std::endl;
+>>>>>>> d315eed4ecc7628334dbdb3a321f7b12933f1482
+}
+
+TEST_CASE("prim 69"){
+    std::cout << " " << std::endl;
+    std::cout << "Prim MST for: 69 --" << std::endl;
+    BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
+    std::vector<std::string> keys = graph.getKeys();
+    std::string start = "1201";
+    Prim prim(graph_, keys, start);
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+
+    std::vector<std::pair<std::string, int>> vect420 = mst["69"];
+
+    for (int i = 0; i < (int) vect420.size(); ++i){
+        std::cout << "{ ";
+        std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
+    }
+    std::cout << " " << std::endl;
+}
+
+TEST_CASE("prim 4434"){
+    std::cout << " " << std::endl;
+    std::cout << "Prim MST for: 4434 --" << std::endl;
+    BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
+    std::vector<std::string> keys = graph.getKeys();
+    std::string start = "1201";
+    Prim prim(graph_, keys, start);
+    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
+
+    std::vector<std::pair<std::string, int>> vect420 = mst["4434"];
+
+    for (int i = 0; i < (int) vect420.size(); ++i){
+        std::cout << "{ ";
+        std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
+    }
+    std::cout << " " << std::endl;
 }
