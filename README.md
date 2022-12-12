@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    <img src="./documents/bitcoin.png" />
+    <img src="./documents/bitcoin.png" width = "200" height = "200"/>
 </p>
 
 ## [Presentation Video]()
