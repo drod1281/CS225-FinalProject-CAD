@@ -59,15 +59,16 @@ This runs CMake to initialize the build directory you created and are currently 
 
 
 
-1. BTCGraph(BFS Traversal): 
+1. BTCGraph(Data Structure): 
+    You can use the constructor for this class in two ways. One takes no input and uses our bitcoin dataset and the other takes in your dataset saved as a .csv file.  Through this all other algorithms can be used as this is the main graph data structure used. This class creates and unordered map to store the dataset. 
    
-2. getAverage (Bonus):
-   
+2. makeAverageMap/getAverage (BFS):
+   makeAverageMap() is a function of the BTCGraph that used breadth first search traversal to create a new unordered map that stores each bitcoin member rated and their average rating. To acquire this map the getAverage() function can be used through the BTCGraph object you created. 
 3. Prim (Prim's Algorithm for Minimum Spanning Tree): 
+   Prim was created as its own class which takes in a unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, a std::vector<std::string> of just the vertices, and a starting point. Both input datasets can be acquired through the BTCGraph object you created using the getGraph() and getKeys() functions. 
    
-   
-4.  printGraph (Force-Directed Graph Drawing):
-   
+4. printGraph (Force-Directed Graph Drawing):
+   printGraph() is a function of the BTCGraph class which outputs the original data structure as a PNG images with circles represented as circles and line connecting a vertice to all vertices it rated. 
 
 
 ### Tests
