@@ -299,18 +299,6 @@ TEST_CASE("prim 1201"){
     std::cout << "Prim MST for: 1201 --" << std::endl;
     BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
-<<<<<<< HEAD
-    std::string start = "420";
-    Prim prim(graph_, start);
-    std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
-
-    std::unordered_map<string, std::vector<std::pair<std::string, int>>>::iterator it = mst.find("420");
-
-    for (int i = 0; i < (int) it->second.size(); ++i){
-        std::cout << "{ ";
-        std::cout << "\"" << it->second.at(i).first << "\"}, \\" << std::endl;
-    }
-=======
     std::vector<std::string> keys = graph.getKeys();
     std::string start = "1201";
     Prim prim(graph_, keys, start);
@@ -323,7 +311,6 @@ TEST_CASE("prim 1201"){
         std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
     }
     std::cout << " " << std::endl;
->>>>>>> d315eed4ecc7628334dbdb3a321f7b12933f1482
 }
 
 TEST_CASE("prim 69"){
