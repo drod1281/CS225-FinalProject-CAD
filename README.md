@@ -32,7 +32,11 @@ We are using the [Bitcoin OTC trust weighted signed network dataset](http://snap
 
 ### Project Structure
 <p align="center">
-  <img src="./data/graphs/repoStructure.png" width="560"/>
+  <img src="./documents/repostructure.png" width="560"/>
+</p>
+
+<p align="center">
+  <img src="./documents/codestructure.png" width="560"/>
 </p>
 
 ## Running Instructions
