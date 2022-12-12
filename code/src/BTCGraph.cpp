@@ -186,6 +186,11 @@ void BTCGraph::printGraph() {
         int x = (std::rand() % graphPNG.width());
         int y = (std::rand() % graphPNG.height());
         
+        while (x < 0 || x >= (int)graphPNG.width() || y < 0 || y >= (int)graphPNG.height()) {
+            x = (std::rand() % graphPNG.width());
+            y = (std::rand() % graphPNG.height());
+        }
+
         bool coordNotInCircle = true;
         for(std::pair<std::string, std::pair<int, int>> vert : idToCoord){
             std::pair<int, int> coord = vert.second;
