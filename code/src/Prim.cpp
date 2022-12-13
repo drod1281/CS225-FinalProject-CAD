@@ -16,11 +16,34 @@ Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> 
 
 
 void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, string startPoint) {
+
+    std::map<std::string, std::vector<std::pair<std::string, int>>> newGraph(graph.begin(), graph.end());
+    for (std::map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = newGraph.begin(); it != newGraph.end(); it++) {
+        for (std::pair<std::string, int> x : it->second) {
+            std::map<std::string, std::vector<std::pair<std::string, int>>>::iterator search = newGraph.find(x.first);
+            if (search != newGraph.end()) {
+                bool in = false;
+                for (std::pair<std::string, int> s : search->second) {
+                    if (it->first == s.first) {
+                        in = true;
+                        break;
+                    }
+                }
+                if (!in) {
+                    search->second.push_back(std::make_pair(it->first, x.second));
+                }
+            } else {
+                std::vector<std::pair<std::string, int>> insert;
+                insert.push_back(std::make_pair(it->first, x.second));
+                newGraph[x.first] = insert;
+            }
+        }
+    }
     
     std::set<std::string> inside;
     std::vector<std::string> keys;
 
-    for (auto kv : graph) {
+    for (auto kv : newGraph) {
         keys.push_back(kv.first);
     }
 
@@ -36,11 +59,11 @@ void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string
     heap<string> heap(keys);
 
 
-    while (inside.size() != graph.size()){
+    while (inside.size() != newGraph.size()){
         string m = heap.pop(); //removeMin, make minHeap
         inside.insert(m);
-        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph.find(m);
-        if (it != graph.end()) {
+        std::map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = newGraph.find(m);
+        if (it != newGraph.end()) {
             std::vector<std::pair<std::string, int>> copy;
             std::vector<std::pair<std::string, int>> list = it->second;
             for (size_t i = 0; i < list.size(); i++) {
