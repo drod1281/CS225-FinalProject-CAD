@@ -102,7 +102,7 @@ void BTCGraph::makeAverageMap(){ //Uses BFS and a starting point to search throu
     std::queue<std::string> q;
     std::set<std::string> inside;
     q.push(startPoint);
-    inside.insert(startPoint); //set ensures that no node already inseide the queue is pushed again
+    inside.insert(startPoint); //set ensures that no node already inside the queue is pushed again
     while (!q.empty()) {
         std::string curr = q.front();
         q.pop();
@@ -128,7 +128,7 @@ double BTCGraph::getAverage(std::string node) {
     std::unordered_map<std::string, double>::iterator it = averages_.find(node);
     if (it != averages_.end()) {
         return it->second;
-    } else { //added this because BFS won't hit veery node in a directed graph since some nodes didn't give out any ratings and only received ratings
+    } else { //added this because BFS won't hit every node in a directed graph since some nodes didn't give out any ratings and only received ratings
         std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(node);
         if (iter != graph_.end()) {
             std::vector<std::pair<std::string, int>> list = iter->second;
