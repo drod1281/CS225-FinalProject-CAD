@@ -59,6 +59,13 @@ cmake ..
 ```
 This runs CMake to initialize the build directory you created and are currently inside of. You can now run make inside this directory to build the programs in this project.
 
+If you would like to use your own data structure, please put the csv file in the data folder in the form of
+source, sink, edgeweight. then put the file name in the in the filename variable in the form ../data/filename
+leave the filename variable as " " if you're not using you're own data to ensure the program works properly
+to use our data, set filename = " "; or filename = "../data/soc-sign-bitcoinotc.csv" is an example of how to properly input a filename
+
+After this step you can make all files and run ('./main')
+
 ### Executable
 
 
