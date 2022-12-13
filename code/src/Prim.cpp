@@ -10,12 +10,12 @@ using namespace std;
 
 Prim::Prim(){}
 
-Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string & startPoint){
+Prim::Prim(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph,  string startPoint){
     buildMST(graph, startPoint);
 }   
 
 
-void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, string & startPoint) {
+void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph, string startPoint) {
     
     std::set<std::string> inside;
     std::vector<std::string> keys;
@@ -78,4 +78,14 @@ void Prim::buildMST(unordered_map<std::string, std::vector<std::pair<std::string
 
 unordered_map<string, std::vector<std::pair<std::string, int>>> Prim::getMST() {
     return mst;
+}
+
+std::vector<std::pair<std::string, int>> Prim::getList(std::string node) {
+    unordered_map<string, std::vector<std::pair<std::string, int>>>::iterator it = mst.find(node);
+    if (it != mst.end()) {
+        return it->second;
+    } else {
+        std::vector<std::pair<std::string, int>> list;
+        return list;
+    }
 }

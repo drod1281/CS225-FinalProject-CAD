@@ -260,3 +260,7 @@ void BTCGraph::printGraph() {
 
     graphPNG.writeToFile("../drawnGraph.png");
 }
+
+std::string BTCGraph::getStart() {
+    return startPoint;
+}

@@ -20,6 +20,7 @@ class BTCGraph {
         void makeAverageMap();
         unordered_map<string, std::vector<std::pair<std::string, int>>> getGraph();
         void printGraph();
+        std::string getStart();
     
     private:
         unordered_map<std::string, std::vector<std::pair<std::string, int>>> graph_;

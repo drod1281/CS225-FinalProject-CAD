@@ -299,9 +299,8 @@ TEST_CASE("prim 1201"){
     std::cout << "Prim MST for: 1201 --" << std::endl;
     BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
-    std::vector<std::string> keys = graph.getKeys();
     std::string start = "1201";
-    Prim prim(graph_, keys, start);
+    Prim prim(graph_, start);
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
 
     std::vector<std::pair<std::string, int>> vect420 = mst["1201"];
@@ -318,9 +317,8 @@ TEST_CASE("prim 69"){
     std::cout << "Prim MST for: 69 --" << std::endl;
     BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
-    std::vector<std::string> keys = graph.getKeys();
     std::string start = "1201";
-    Prim prim(graph_, keys, start);
+    Prim prim(graph_, start);
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
 
     std::vector<std::pair<std::string, int>> vect420 = mst["69"];
@@ -337,9 +335,8 @@ TEST_CASE("prim 4434"){
     std::cout << "Prim MST for: 4434 --" << std::endl;
     BTCGraph graph("../data/soc-sign-bitcoinotc.csv");
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> graph_ = graph.getGraph();
-    std::vector<std::string> keys = graph.getKeys();
     std::string start = "1201";
-    Prim prim(graph_, keys, start);
+    Prim prim(graph_, start);
     std::unordered_map<string, std::vector<std::pair<std::string, int>>> mst = prim.getMST();
 
     std::vector<std::pair<std::string, int>> vect420 = mst["4434"];
