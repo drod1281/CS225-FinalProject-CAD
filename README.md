@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    <img src="./documents/bitcoin.png" width = "200" height = "200"/>
+    <img src="./documents/readmeimages/bitcoin.png" width = "200" height = "200"/>
 </p>
 
 ## [Presentation Video]()
@@ -32,11 +32,11 @@ We are using the [Bitcoin OTC trust weighted signed network dataset](http://snap
 
 ### Project Structure
 <p align="center">
-  <img src="./documents/repostructure.png" />
+  <img src="./documents/readmeimages/repostructure.png" />
 </p>
 
 <p align="center">
-  <img src="./documents/codestructure.png" />
+  <img src="./documents/readmeimages/codestructure.png" />
 </p>
 
 ## Running Instructions
