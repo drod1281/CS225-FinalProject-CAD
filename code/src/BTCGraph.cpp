@@ -156,6 +156,12 @@ void BTCGraph::printGraph() {
     std::map<std::string, std::pair<int, int>> idToCoord;
     int r = 5;
 
+    std::vector<std::string> keys;
+
+    for (auto kv : graph_) {
+        keys.push_back(kv.first);
+    }
+
     for(std::string v : keys) {
         int x = (std::rand() % graphPNG.width());
         int y = (std::rand() % graphPNG.height());
