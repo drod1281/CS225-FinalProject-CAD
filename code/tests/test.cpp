@@ -56,7 +56,6 @@ TEST_CASE("Test id 69,100,26,781 work with parameterized constructor") {
 
 TEST_CASE("Test id 2688, 257, 4434, 3025, 2877, 257, 420, 397 work with default constructor") {
     BTCGraph* graph = new BTCGraph();
-    graph->printGraph();
 
     std::vector<std::pair<std::string, int>> list2688 = graph->getAdjacencyList("2688");
     std::vector<std::pair<std::string, int>> correct2688 = {std::make_pair("304", 1), std::make_pair("2879", -10), std::make_pair("2866", 10), std::make_pair("3034", 1), std::make_pair("2402", 1), std::make_pair("2658", 1), std::make_pair("2934", 2), std::make_pair("3036", 1), std::make_pair("2880", 1), std::make_pair("2763", 2), std::make_pair("2795", -1), std::make_pair("2725", 1), std::make_pair("1317", 1), std::make_pair("2125", 1), std::make_pair("2296", 1), std::make_pair("3239", 1), std::make_pair("2028", 5), std::make_pair("312", -10), std::make_pair("2648", 2), std::make_pair("1810", -3)};
@@ -345,4 +344,9 @@ TEST_CASE("prim 4434"){
         std::cout << "\"" << vect420[i].first << "\"}, \\" << std::endl;
     }
     std::cout << " " << std::endl;
+}
+
+TEST_CASE("Print graph") {
+    BTCGraph* graph = new BTCGraph();
+    graph->printGraph();
 }

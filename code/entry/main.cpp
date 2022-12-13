@@ -8,10 +8,12 @@ int main() {
     // If you would like to use your own data structure, please put the csv file in the data folder in the form of
     // source, sink, edgeweight. then put the file name in the in the filename variable in the form ../data/filename
     // leave the filename variable as " " if you're not using you're own data to ensure the program works properly
-    std::string filename = " ";
-    if (filename == " ") {
+    // to use our data, set filename = " "; or filename = "../data/soc-sign-bitcoinotc.csv" is an example of how to properly input a filename
+    std::string filename = " "; //Leave a space if using our data set
+    if (filename == " " || filename.size() <= 1) {
         BTCGraph* graph = new BTCGraph();
         std::cout << "Hello! The data has already been put into the graph data structure, for our data file, there are 5881 nodes starting with id 1, there are some id values greater than 5881 so be aware that there are some id's in between 1 and 5882 that don't exist." << std::endl;
+        std::cout << " " << std::endl;
         std::cout << "Please Input an id that you would like to see the average rating for:" << std::endl;
         std::string input;
         std::cin >> input;
@@ -38,7 +40,7 @@ int main() {
         }
 
         std::cout << " " << std::endl;
-        std::cout << "Would you like to see a list of the lowest rating a particular id has received? 1 for yes, 0 for no" << std::endl;
+        std::cout << "Would you like to see a list of the lowest ratings a particular id has received? 1 for yes, 0 for no" << std::endl;
         int i;
         std::cin >> i;
         if (i == 1) {
@@ -88,7 +90,7 @@ int main() {
 
     } else {
         if (filename.substr(0, 8) != "../data/") {
-            std::cout << "Please put the CSV file in the data folder and make sure to put the filename as specified in the comments. If not using you're own data then set filename equal to " "" << std::endl;
+            std::cout << "Please put the CSV file in the data folder and make sure to put the filename as specified in the comments. If not using you're own data then set filename equal to 1 space" << std::endl;
         } else {
             BTCGraph* graph = new BTCGraph(filename);
             std::cout << "Hello! The data has already been put into the graph data structure." << std::endl;

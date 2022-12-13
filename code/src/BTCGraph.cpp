@@ -18,27 +18,27 @@ BTCGraph::BTCGraph(std::string filename) {
     std::string line, word;
     
     if(ifs.is_open()) {
-        while(getline(ifs, line)) {
+        while(getline(ifs, line)) { //gets each line of CSV file
             row.clear();
             
             stringstream str(line);
             
-            while(getline(str, word, ',')) {
+            while(getline(str, word, ',')) { //gets each word in the line
                 row.push_back(word);
             }
             content.push_back(row);
         }
     }
 
-    for(int i = 0; i < (int)content.size(); i++) {
-        std::vector<std::string> iter = content[i];
+    for(int i = 0; i < (int)content.size(); i++) { 
+        std::vector<std::string> iter = content[i]; //gets a vector that represents each line in CSV
         if (i == 0) {
             startPoint = iter[1];
         }
-        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(iter[1]);
-        int rating = stoi(iter[2]);
+        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(iter[1]); //second column is sink
+        int rating = stoi(iter[2]); 
         if (it != graph_.end()) {
-            it->second.push_back(std::make_pair(iter[0], rating));
+            it->second.push_back(std::make_pair(iter[0], rating)); //checks if already in map, if it is then we push back to adjacency list
         } else {
             std::vector<std::pair<std::string, int>> vect;
             vect.push_back(std::make_pair(iter[0], rating));
@@ -58,12 +58,12 @@ BTCGraph::BTCGraph() {
     std::string line, word;
     
     if(ifs.is_open()) {
-        while(getline(ifs, line)) {
+        while(getline(ifs, line)) { //gets each line of CSV file
             row.clear();
             
             stringstream str(line);
             
-            while(getline(str, word, ',')) {
+            while(getline(str, word, ',')) { //gets each word in the line
                 row.push_back(word);
             }
             content.push_back(row);
@@ -71,21 +71,21 @@ BTCGraph::BTCGraph() {
     }
 
     for(int i = 0; i < (int)content.size(); i++) {
-        std::vector<std::string> iter = content[i];
+        std::vector<std::string> iter = content[i]; //gets a vector that represents each line in CSV
         if (i == 0) {
             startPoint = iter[1];
         }
-        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(iter[1]);
+        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator it = graph_.find(iter[1]); //second column is sink
         int rating = stoi(iter[2]);
         if (it != graph_.end()) {
-            it->second.push_back(std::make_pair(iter[0], rating));
+            it->second.push_back(std::make_pair(iter[0], rating)); //checks if already in map, if it is then we push back to adjacency list
         } else {
             std::vector<std::pair<std::string, int>> vect;
             vect.push_back(std::make_pair(iter[0], rating));
             graph_[iter[1]] = vect;
         }
     }
-    makeAverageMap();
+    makeAverageMap(); //makes map that maps id to it's average rating
 }
 
 std::vector<std::pair<std::string, int>> BTCGraph::getAdjacencyList(std::string node) {
@@ -98,24 +98,24 @@ std::vector<std::pair<std::string, int>> BTCGraph::getAdjacencyList(std::string 
     }
 }
 
-void BTCGraph::makeAverageMap(){ //make sure we have destination vertex in graph, the vertices that dont get reached dont send out any ratings.
+void BTCGraph::makeAverageMap(){ //Uses BFS and a starting point to search through our graph structure to make the average rating map
     std::queue<std::string> q;
     std::set<std::string> inside;
     q.push(startPoint);
-    inside.insert(startPoint);
+    inside.insert(startPoint); //set ensures that no node already inseide the queue is pushed again
     while (!q.empty()) {
         std::string curr = q.front();
         q.pop();
-        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(curr);
+        std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(curr); //finds adjacency list if it's in the graph
         if (iter != graph_.end()) {
             std::vector<std::pair<std::string, int>> list = iter->second;
             double sum = 0;
             for (size_t i = 0; i < list.size(); i++) {
-                if (inside.find(list[i].first) == inside.end()) {
+                if (inside.find(list[i].first) == inside.end()) { //inside queue check
                     q.push(list[i].first);
                     inside.insert(list[i].first);
                 }
-                sum += (double)list[i].second;
+                sum += (double)list[i].second; //makes average
             }
             double average = sum / (double)list.size();
             averages_[iter->first] = average;
@@ -128,7 +128,7 @@ double BTCGraph::getAverage(std::string node) {
     std::unordered_map<std::string, double>::iterator it = averages_.find(node);
     if (it != averages_.end()) {
         return it->second;
-    } else {
+    } else { //added this because BFS won't hit veery node in a directed graph since some nodes didn't give out any ratings and only received ratings
         std::unordered_map<std::string, std::vector<std::pair<std::string, int>>>::iterator iter = graph_.find(node);
         if (iter != graph_.end()) {
             std::vector<std::pair<std::string, int>> list = iter->second;
@@ -140,7 +140,7 @@ double BTCGraph::getAverage(std::string node) {
             averages_[iter->first] = average;
             return average;
         } else {
-            return -11.0;
+            return -11.0; //this tells us that the node isn't in the graph
         }
     }
 }
@@ -151,9 +151,9 @@ unordered_map<string, std::vector<std::pair<std::string, int>>> BTCGraph::getGra
 
 void BTCGraph::printGraph() {
 
-    PNG graphPNG((graph_.size() * 2.5), (graph_.size() * 2.5));
+    PNG graphPNG((graph_.size() * 2.5), (graph_.size() * 2.5)); //scales png so the png isn't the same size every time
 
-    std::map<std::string, std::pair<int, int>> idToCoord;
+    std::map<std::string, std::pair<int, int>> idToCoord; //maps id to coordinates on the png
     int r = 5;
 
     std::vector<std::string> keys;
@@ -176,27 +176,18 @@ void BTCGraph::printGraph() {
             std::pair<int, int> coord = vert.second;
             int xInPng = coord.first;
             int yInPng = coord.second;
-            if( (x >= (xInPng - r)) && (x <= (xInPng + r)) && (y >= (yInPng - r)) && (y <= (yInPng + r)) ){
+            if( (x >= (xInPng - r)) && (x <= (xInPng + r)) && (y >= (yInPng - r)) && (y <= (yInPng + r)) ){ //checks if coordinates are in node circle
                 coordNotInCircle = false;
                 break;
             }
         }
 
-        if(coordNotInCircle == true) {
+        if(coordNotInCircle == true) { //assigns coordinate if it's not in another circle
             idToCoord[v] = std::make_pair(x, y);
-            for(int i = (x - r); i <= (x + r); i++){
-                for(int j = (y - r); j<= (y + r); j++){
-                    if((i >= 0) && (i < (int)graphPNG.width()) && (j >= 0) && (j < (int)graphPNG.height())){
-                        if( ( (i - x) * (i - x) ) + ( (j - y) * (j - y) ) <= (r * r) ){
-                            graphPNG.getPixel(i, j) = HSLAPixel(0, 1, 0.5);
-                        }
-                    }
-                }
-            }
         }
     }
 
-    for(std::pair<std::string, std::vector<std::pair<std::string, int>>> pairVE : graph_) {
+    for(std::pair<std::string, std::vector<std::pair<std::string, int>>> pairVE : graph_) { //creates the lines for the edges on PNG
 
         std::pair<int, int> coord1 = idToCoord[pairVE.first];
         int x1 = coord1.first;
@@ -264,9 +255,21 @@ void BTCGraph::printGraph() {
         }
     }
 
+    for (std::map<std::string, std::pair<int, int>>::iterator it = idToCoord.begin(); it != idToCoord.end(); it++) { //draws circles for nodes after drawing the lines so it looks cleaner
+        for(int i = (it->second.first - r); i <= (it->second.first + r); i++){
+                for(int j = (it->second.second - r); j <= (it->second.second + r); j++){
+                    if((i >= 0) && (i < (int)graphPNG.width()) && (j >= 0) && (j < (int)graphPNG.height())){
+                        if( ( (i - it->second.first) * (i - it->second.first) ) + ( (j - it->second.second) * (j - it->second.second) ) <= (r * r) ){
+                            graphPNG.getPixel(i, j) = HSLAPixel(0, 1, 0.5);
+                        }
+                    }
+                }
+            }
+    }
+
     graphPNG.writeToFile("../drawnGraph.png");
 }
 
-std::string BTCGraph::getStart() {
+std::string BTCGraph::getStart() { //returns start point
     return startPoint;
 }
