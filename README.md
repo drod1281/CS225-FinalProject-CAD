@@ -64,7 +64,7 @@ source, sink, edgeweight. then put the file name in the in the filename variable
 leave the filename variable as " " if you're not using you're own data to ensure the program works properly
 to use our data, set filename = " "; or filename = "../data/soc-sign-bitcoinotc.csv" is an example of how to properly input a filename
 
-After this step you can make all files and run ('./main')
+After this step you can make all files and run (`./main`)
 
 ### Executable
 
